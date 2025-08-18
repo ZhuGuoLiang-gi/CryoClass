@@ -17,11 +17,6 @@ env/
 
 # Dataset and large files
 dataset/
-data/
-*.csv
-*.tsv
-*.pkl
-*.h5
 
 # Model weights
 model/prot_t5_xl_uniref50
