@@ -1,6 +1,6 @@
-# Protein Classification from FASTA
+# Psychrophilic Microbe Prediction from Species Proteomes
 
-This script performs protein sequence classification. The input can be a single FASTA file or a directory containing multiple FASTA files. The script first generates protein embeddings using the ProtT5 model, then uses a trained PyTorch model for prediction, and outputs a CSV file.
+This script predicts whether a species is a psychrophilic (cold-adapted) microbe based on its proteome. The input can be a single FASTA file representing a species proteome or a directory containing multiple species proteomes. The script first generates protein embeddings using the ProtT5 model, then uses a trained PyTorch model for classification, and outputs a CSV file with the prediction results.
 
 ## Installation
 
@@ -15,9 +15,25 @@ conda activate CryoClass
 ```
 
 
+##  Download ProtT5 Model
+
+This project uses the ProtT5 XL UniRef50 model for protein embeddings. You can download the model using the provided script:
+
+python utils/download_prot_t5_xl_uniref50.py
+
+
+By default, this script uses the Alibaba Cloud mirror for faster download in China.
+
+If you want to download directly from the official Hugging Face repository instead, use this link:
+
+ProtT5 XL UniRef50 on Hugging Face
+
+
+
 and any dependencies required for ProtT5 embedding.
 
 Usage
+```bash
 python predict.py -f <FASTA_FILE_OR_DIR> -o <OUTPUT_CSV> -m <MODEL_PTH> --protT5_model <PROTT5_MODEL_DIR> --embedding_outdir <EMBEDDING_DIR> --sample_n <N>
 
 Arguments
@@ -44,6 +60,8 @@ python predict.py \
     --protT5_model ../models/prot_t5_xl_uniref50 \
     --embedding_outdir ./embeddings \
     --sample_n 50
+
+```
 
 Notes
 

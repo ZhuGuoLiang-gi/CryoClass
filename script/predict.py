@@ -102,13 +102,13 @@ def predict_fasta_embeddings(model, embedding_file):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Protein classification from FASTA")
-    parser.add_argument("-f", "--fasta", required=True, help="Input protein group FASTA file or directory")
-    parser.add_argument("-o", "--output", required=True, help="Output csv file")
-    parser.add_argument("-m", "--model", default="../model/best_model_50.pth", help="Trained model file")
+    parser = argparse.ArgumentParser(description="Predict whether a species is a psychrophilic microbe from its proteome")
+    parser.add_argument("-f", "--fasta", required=True, help="Input species proteome FASTA file or directory included FASTA files")
+    parser.add_argument("-o", "--output", required=True, help="Output CSV file")
+    parser.add_argument("-m", "--model", required=True, help="Trained psychrophilic microbe classifier model (PyTorch .pth file)")
     parser.add_argument("--protT5_model", default=None, help="Path to ProtT5 model directory")
-    parser.add_argument("--sample_n", default="all", help="Number of sequences to randomly sample from each fasta (default 'all')")
-    parser.add_argument("--embedding_outdir", default="./embeddings", help="Directory to save embeddings (pkl)")
+    parser.add_argument("--sample_n", default="all", help="Number of sequences to randomly sample from each FASTA (default 'all')")
+    parser.add_argument("--embedding_outdir", default="./embeddings", help="Directory to save embeddings (.pkl)")
     args = parser.parse_args()
 
 
