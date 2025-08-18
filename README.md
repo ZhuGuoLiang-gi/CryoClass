@@ -19,18 +19,15 @@ conda activate CryoClass
 
 This project uses the ProtT5 XL UniRef50 model for protein embeddings. You can download the model using the provided script:
 
+```bash
 python utils/download_prot_t5_xl_uniref50.py
-
+```
 
 By default, this script uses the Alibaba Cloud mirror for faster download in China.
 
-If you want to download directly from the official Hugging Face repository instead, use this link:
-
-ProtT5 XL UniRef50 on Hugging Face
+You can also download the official ProtT5 XL UniRef50 model from Hugging Face: [ProtT5 XL UniRef50 on Hugging Face](https://huggingface.co/Rostlab/prot_t5_xl_uniref50)
 
 
-
-and any dependencies required for ProtT5 embedding.
 
 Usage
 ```bash
