@@ -1,0 +1,17 @@
+# 数据路径
+file_pkl: "/sugon_store/zhuguoliang/project4/microbio/analysis1/project_predict/dataset/embedding_embedding_seq.pkl"
+cls_org: "/sugon_store/zhuguoliang/project4/microbio/analysis1/project_predict/dataset/cls_org.json"
+
+# 采样数量
+sample_num_list: [10, 20, 30, 40, 50]
+
+# 模型保存 & 结果文件
+model_output: "./models"
+results_file: "model_results.json"
+roc_curve_plot: "roc_curve_plot_with_auc.png"
+
+# 训练参数
+training:
+  num_epochs: 30000
+  learning_rate: 1e-6
+  early_stopping_patience: 5000
