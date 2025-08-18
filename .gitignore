@@ -25,7 +25,6 @@ data/
 *.h5
 
 # Model weights
-model/
 *.pt
 *.ckpt
 *.hdf5
