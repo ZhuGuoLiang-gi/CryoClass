@@ -4,20 +4,15 @@ This script performs protein sequence classification. The input can be a single 
 
 ## Installation
 
-Make sure Python >= 3.8 is installed and create a virtual environment:
+Create the Conda environment and install dependencies using the provided `environment.yml`:
 
 ```bash
-conda create -n protein_class python=3.10 -y
-conda activate protein_class
-pip install -r requirements.txt
+# Create environment and install dependencies
+conda env create -f environment.yml
 
-
-requirements.txt should include:
-
-torch
-joblib
-tqdm
-biopython
+# Activate the environment
+conda activate CryoClass
+```
 
 
 and any dependencies required for ProtT5 embedding.
