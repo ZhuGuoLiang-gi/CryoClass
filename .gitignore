@@ -25,9 +25,7 @@ data/
 
 # Model weights
 model/prot_t5_xl_uniref50
-*.pt
-*.ckpt
-*.hdf5
+!model/
 
 # OS generated files
 .DS_Store
