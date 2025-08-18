@@ -44,7 +44,65 @@ Arguments
 | `-f, --fasta`        | Input species proteome FASTA file or directory containing multiple FASTA files                    | Yes      | N/A                             |
 | `-o, --output`       | Output CSV file to save prediction results                                                        | Yes      | N/A                             |
 | `-m, --model`        | Trained psychrophilic microbe classifier model (PyTorch `.pth` file)                              | Yes      | N/A                             |
-| `--protT5_model`     | Path to the ProtT5 XL UniRef50 model directory used for protein embeddings                        | No       | `../models/prot_t5_xl_uniref50` |
+| `--protT5_model`     | Path to the ProtT5 XL UniRef50 model directory used for protein embeddings                        | No       | `/models/prot_t5_xl_uniref50` |
 | `--sample_n`         | Number of sequences to randomly sample from each FASTA for embedding (default uses all sequences) | No       | `all`                           |
 | `--embedding_outdir` | Directory to save protein embeddings as `.pkl` files                                              | No       | `./embeddings`                  |
+
+
+# Training Psychrophilic Microbe Classifier
+
+This script trains and evaluates models for predicting psychrophilic microbes using protein embeddings. The training configuration is specified in a YAML file.
+
+## Usage
+
+Run the training script with the path to a configuration file:
+
+```bash
+python ../../script/train.py -c ../../config/config.yaml
+```
+
+Arguments
+
+| Argument       | Description                                         | Required | Default |
+| -------------- | --------------------------------------------------- | -------- | ------- |
+| `-c, --config` | Path to the configuration YAML file (`config.yaml`) | Yes      | N/A     |
+
+Example
+
+Configuration File (config.yaml)
+
+The configuration file defines the data paths, sampling parameters, model output, and training hyperparameters. Example content:
+
+
+```bash
+# Data paths
+file_pkl: "/sugon_store/zhuguoliang/project4/microbio/analysis1/project_predict/dataset/embedding_embedding_seq.pkl"
+cls_org: "/sugon_store/zhuguoliang/project4/microbio/analysis1/project_predict/dataset/cls_org.json"
+
+# Sampling numbers
+sample_num_list: [10, 20, 30, 40, 50]
+
+# Model saving & result files
+model_output: "./models"
+results_file: "model_results.json"
+roc_curve_plot: "roc_curve_plot_with_auc.png"
+
+# Training parameters
+training:
+  num_epochs: 30000
+  learning_rate: 1e-6
+  early_stopping_patience: 5000
+```
+
+- `file_pkl`: Training database containing protein embeddings for all sequences used to train the model.
+- `cls_org`: Class labels corresponding to each training sample.
+- `sample_num_list`: Number of sequences to sample from each proteome during training.
+- `model_output`: Directory to save trained models.
+- `results_file`: JSON file to store evaluation results.
+- `roc_curve_plot`: File name for the ROC curve plot with AUC.
+- `training.num_epochs`: Number of training epochs.
+- `training.learning_rate`: Learning rate for the optimizer.
+- `training.early_stopping_patience`: Number of epochs to wait for improvement before early stopping.
+
+
 
