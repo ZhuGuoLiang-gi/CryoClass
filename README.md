@@ -49,11 +49,17 @@ Arguments
 | `--embedding_outdir` | Directory to save protein embeddings as `.pkl` files                                              | No       | `./embeddings`                  |
 
 
-# Training Psychrophilic Microbe Classifier
+## Training Psychrophilic Microbe Classifier
 
 This script trains and evaluates models for predicting psychrophilic microbes using protein embeddings. The training configuration is specified in a YAML file.
 
-## Usage
+
+### Download Train Dataset
+
+
+
+
+### Usage
 
 Run the training script with the path to a configuration file:
 
@@ -76,8 +82,8 @@ The configuration file defines the data paths, sampling parameters, model output
 
 ```bash
 # Data paths
-file_pkl: "/sugon_store/zhuguoliang/project4/microbio/analysis1/project_predict/dataset/embedding_embedding_seq.pkl"
-cls_org: "/sugon_store/zhuguoliang/project4/microbio/analysis1/project_predict/dataset/cls_org.json"
+file_pkl: "./dataset/embedding_embedding_seq.pkl"
+cls_org: "./dataset/cls_org.json"
 
 # Sampling numbers
 sample_num_list: [10, 20, 30, 40, 50]
