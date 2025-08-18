@@ -16,7 +16,7 @@ venv/
 env/
 
 # Dataset and large files
-dataset/
+dataset/embedding_embedding_seq.pkl
 
 # Model weights
 models/prot_t5_xl_uniref50
@@ -32,3 +32,4 @@ Thumbs.db
 .idea/
 *.sublime-project
 *.sublime-workspace
+upload_dataset.py
