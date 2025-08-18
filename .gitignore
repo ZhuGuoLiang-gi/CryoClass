@@ -25,6 +25,7 @@ data/
 
 # Model weights
 model/prot_t5_xl_uniref50
+model/.locks/
 !model/
 
 # OS generated files
