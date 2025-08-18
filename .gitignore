@@ -19,8 +19,8 @@ env/
 dataset/
 
 # Model weights
-model/prot_t5_xl_uniref50
-model/.locks/
+models/prot_t5_xl_uniref50
+models/.locks/
 !model/
 
 # OS generated files

@@ -105,11 +105,10 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="下载 prot_t5_xl_uniref50 所需文件并创建 pipeline")
-    parser.add_argument("--cache_dir", default="../model/prot_t5_xl_uniref50", help="模型缓存目录")
+    parser.add_argument("--cache_dir", default="../models/prot_t5_xl_uniref50", help="模型缓存目录")
     args = parser.parse_args()
 
-    # model_dir = download_prot_t5_xl_minimal(args.cache_dir)
-    model_dir = f'../model/prot_t5_xl_uniref50'
+    model_dir = download_prot_t5_xl_minimal(args.cache_dir)
     model_dir = link_downloaded_files_to_model_dir(args.cache_dir, model_dir)
     pipe = load_pipeline(model_dir)
 

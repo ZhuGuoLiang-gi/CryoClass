@@ -68,7 +68,10 @@ def loading_model(model_file):
 
 
 def embedding_protein(protT5_model,fasta_file, output_pkl, bs=10):
-    cmd = f'python ../utils/ProtT5_embedding.py -f {fasta_file} -o {output_pkl} -b {bs} --protT5_model {protT5_model}'
+
+    protT5_script = os.path.abspath(os.path.join(os.path.dirname(__file__), '../utils/ProtT5_embedding.py'))
+
+    cmd = f'python {protT5_script} -f {fasta_file} -o {output_pkl} -b {bs} --protT5_model {protT5_model}'
     run_command(cmd)
 
 
@@ -103,10 +106,16 @@ def main():
     parser.add_argument("-f", "--fasta", required=True, help="Input protein group FASTA file or directory")
     parser.add_argument("-o", "--output", required=True, help="Output csv file")
     parser.add_argument("-m", "--model", default="../model/best_model_50.pth", help="Trained model file")
-    parser.add_argument("--protT5_model", default="../model/prot_t5_xl_uniref50", help="Path to ProtT5 model directory")
+    parser.add_argument("--protT5_model", default=None, help="Path to ProtT5 model directory")
     parser.add_argument("--sample_n", default="all", help="Number of sequences to randomly sample from each fasta (default 'all')")
     parser.add_argument("--embedding_outdir", default="./embeddings", help="Directory to save embeddings (pkl)")
     args = parser.parse_args()
+
+
+
+    if not args.protT5_model:
+        args.protT5_model =  os.path.abspath(os.path.join(os.path.dirname(__file__),'../models/prot_t5_xl_uniref50'))
+
 
     model = loading_model(args.model)
     os.makedirs(args.embedding_outdir, exist_ok=True)
