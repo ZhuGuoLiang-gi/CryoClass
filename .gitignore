@@ -20,11 +20,11 @@ dataset/
 data/
 *.csv
 *.tsv
-*.fasta
 *.pkl
 *.h5
 
 # Model weights
+model/prot_t5_xl_uniref50
 *.pt
 *.ckpt
 *.hdf5
