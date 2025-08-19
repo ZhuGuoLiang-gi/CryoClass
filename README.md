@@ -37,7 +37,7 @@ Run the prediction script on a species proteome FASTA file or a directory of pro
 cd example/predict
 python ../../script/predict.py -f ./test_model -o output.csv -m ../../models/models/best_model_50.pth --sample_n 10
 ```
-Arguments
+### Arguments
 
 | Argument             | Description                                                                                       | Required | Default                         |
 | -------------------- | ------------------------------------------------------------------------------------------------- | -------- | ------------------------------- |
@@ -65,9 +65,11 @@ python ./utils/download_dataset.py --outdir ./dataset/ --workers 8
 
 #### Arguments:
 
---outdir : Directory to save downloaded files (default: ./dataset/)
+| Argument    | Description                         | Required | Default      |
+| ----------- | ----------------------------------- | -------- | ------------ |
+| `--outdir`  | Directory to save downloaded files  | No       | `./dataset/` |
+| `--workers` | Number of parallel download threads | No       | `8`          |
 
---workers : Number of parallel download threads (default: 8)
 
 #### The script will:
 
