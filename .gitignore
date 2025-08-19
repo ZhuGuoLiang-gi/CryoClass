@@ -33,3 +33,4 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 upload_dataset.py
+utils/chunks_tmp/

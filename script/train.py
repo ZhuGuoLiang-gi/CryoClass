@@ -1,4 +1,3 @@
-#!/public/home/guoliangzhu/miniconda3/envs/DMS/bin/python
 import os
 import joblib
 import numpy as np
@@ -8,15 +7,11 @@ from sklearn.metrics import (
     roc_auc_score, roc_curve, accuracy_score, 
     confusion_matrix, classification_report, precision_score, recall_score, f1_score
 )
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
-from imblearn.over_sampling import SMOTE
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 import argparse

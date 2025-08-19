@@ -55,7 +55,27 @@ This script trains and evaluates models for predicting psychrophilic microbes us
 
 
 ### Download Train Dataset
+You can download the training dataset from Zenodo: [Zenodo Record](https://zenodo.org/records/16899355)
 
+
+Alternatively, you can use the provided download_dataset.py script in the utils folder to download all files efficiently, with support for multi-threaded downloads and automatic merging of split files:
+```bash
+python ./utils/download_dataset.py --outdir ./dataset/ --workers 8
+```
+
+#### Arguments:
+
+--outdir : Directory to save downloaded files (default: ./dataset/)
+
+--workers : Number of parallel download threads (default: 8)
+
+#### The script will:
+
+- Skip already downloaded files.
+
+- Automatically merge large split files.
+
+- Save all files into the same ./dataset/ folder.
 
 
 
@@ -67,13 +87,13 @@ Run the training script with the path to a configuration file:
 python ../../script/train.py -c ../../config/config.yaml
 ```
 
-Arguments
+#### Arguments
 
 | Argument       | Description                                         | Required | Default |
 | -------------- | --------------------------------------------------- | -------- | ------- |
 | `-c, --config` | Path to the configuration YAML file (`config.yaml`) | Yes      | N/A     |
 
-Example
+#### Example
 
 Configuration File (config.yaml)
 
