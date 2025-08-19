@@ -104,8 +104,15 @@ def load_pipeline(model_dir: str):
 if __name__ == "__main__":
     import argparse
 
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    default_cache_dir = os.path.join(script_dir, "../models/prot_t5_xl_uniref50")
+
     parser = argparse.ArgumentParser(description="下载 prot_t5_xl_uniref50 所需文件并创建 pipeline")
-    parser.add_argument("--cache_dir", default="../models/prot_t5_xl_uniref50", help="模型缓存目录")
+
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cache_dir",default=default_cache_dir,help="模型缓存目录")
     args = parser.parse_args()
 
     model_dir = download_prot_t5_xl_minimal(args.cache_dir)

@@ -290,8 +290,10 @@ def get_model_eval(X, y, num_epochs, n_test, m_val, learning_rate=1e-6, early_st
 
 
 def main(config):
-    file_pkl = config["file_pkl"]
-    cls_org = config["cls_org"]
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_pkl = os.path.join(script_dir, config["file_pkl"])
+    cls_org = os.path.join(script_dir, config["cls_org"])
+    
     num_list = config["sample_num_list"]
     model_output = config["model_output"]
     results_file = config.get("results_file", "model_results.json")

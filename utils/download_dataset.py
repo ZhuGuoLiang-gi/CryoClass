@@ -87,9 +87,13 @@ def main(deposition_id, outdir="downloads", max_workers=8):
         merge_parts(base, outdir)
 
 if __name__ == "__main__":
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+
     parser = argparse.ArgumentParser(description="Download Zenodo deposition with multi-threading")
     # parser.add_argument("deposition_id", type=int, help="Zenodo deposition ID")
-    parser.add_argument("--outdir", default="./dataset", help="下载目录")
+    parser.add_argument("--outdir", default=os.path.join(script_dir, "../dataset"), help="下载目录")
     parser.add_argument("--workers", type=int, default=8, help="并行下载线程数")
     args = parser.parse_args()
     deposition_id=16899355
