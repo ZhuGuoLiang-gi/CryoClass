@@ -104,8 +104,8 @@ The configuration file defines the data paths, sampling parameters, model output
 
 ```bash
 # Data paths
-file_pkl: "./dataset/embedding_embedding_seq.pkl"
-cls_org: "./dataset/cls_org.json"
+file_pkl: "../dataset/embedding_embedding_seq.pkl"
+cls_org: "../dataset/cls_org.json"
 
 # Sampling numbers
 sample_num_list: [10, 20, 30, 40, 50]
