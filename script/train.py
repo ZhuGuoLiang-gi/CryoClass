@@ -19,7 +19,6 @@ import yaml
 
 
 
-
 def loading_pkl_file(file_pkl):
     protein_uid_list = []
     data = joblib.load(file_pkl)
