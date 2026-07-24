@@ -1,6 +1,26 @@
 # Psychrophilic Microbe Prediction from Species Proteomes
 
-This script predicts whether a species is a psychrophilic (cold-adapted) microbe based on its proteome. The input can be a single FASTA file representing a species proteome or a directory containing multiple species proteomes. The script first generates protein embeddings using the ProtT5 model, then uses a trained PyTorch model for classification, and outputs a CSV file with the prediction results.
+This script predicts whether a species is a psychrophilic (cold-adapted) microbe based on its proteome. The input can be a single FASTA file representing a species proteome or a directory containing multiple species proteomes. The script first generates **protein sequence embeddings** using the ProtT5 protein language model, then uses a trained PyTorch model for classification, and outputs a CSV file with the prediction results.
+
+**Important:** CryoClass does **not** use 3D protein structures. The only required input is proteome FASTA sequences. No structural prediction or functional annotation is needed.
+
+## Hardware requirements (GPU)
+
+CryoClass **requires an NVIDIA GPU with CUDA** for the ProtT5 embedding step. The downstream classifier itself is lightweight and can run on CPU once embeddings are available, but the default prediction workflow embeds sequences with ProtT5 on GPU.
+
+| Item | Requirement |
+| ---- | ----------- |
+| GPU | NVIDIA GPU with CUDA support (recommended) |
+| GPU memory (VRAM) | **≥ 16 GB** (ProtT5 embedding requests ~15 GB free memory by default) |
+| Tested configuration | NVIDIA RTX A4000 (16 GB) |
+| OS / driver | Linux with a working NVIDIA driver and CUDA-compatible PyTorch (see `environment.yml`) |
+| CPU-only | Not recommended for the default pipeline; ProtT5 embedding is GPU-oriented and will be slow or fail without sufficient GPU memory |
+
+Notes:
+
+- Embedding is the main GPU bottleneck; reducing `--sample_n` lowers runtime but does not remove the GPU memory requirement for loading ProtT5.
+- Training (`script/train.py`) will use CUDA when available and fall back to CPU otherwise.
+- Make sure `nvidia-smi` works before running prediction.
 
 ## Installation
 
@@ -30,6 +50,8 @@ You can also download the official ProtT5 XL UniRef50 model from Hugging Face: [
 
 
 ## Usage
+
+> **GPU required.** Run prediction on a machine with an NVIDIA GPU (≥16 GB VRAM). See [Hardware requirements (GPU)](#hardware-requirements-gpu).
 
 Run the prediction script on a species proteome FASTA file or a directory of proteomes:
 
